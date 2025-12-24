@@ -2,12 +2,9 @@
 
 AI-powered routing system for luxury concierge requests using **GraphQL + Prisma + GPT-4 + Production Evals**.
 
----
-
 ## Demo
 
-**[Video Demo]** - [Add your Loom link here]
-
+Please see demo here - https://drive.google.com/file/d/1iMW1iweGzhQTYlLkpzSYs4frbeOW-x-S/view?usp=sharing
 
 ## Quick Start
 
@@ -26,8 +23,6 @@ npm run dev:api
 
 # API runs on http://localhost:8911/graphql
 ```
-
----
 
 ## Testing the API
 
@@ -71,8 +66,6 @@ mutation {
 }
 ```
 
----
-
 ## Run Production Evals
 
 After you've made some requests via the GraphQL API:
@@ -89,12 +82,3 @@ This queries **real routing decisions from the database** and validates:
 - Reasoning presence
 
 **No hardcoded fixtures** - evals run on actual production data!
-
----
-
-## What It Does
-
-Routes luxury service requests by analyzing:
-- **Intent**: IDEATION | INFO | EXECUTION
-- **Risk Level**: LOW | MEDIUM | HIGH
-- **Next Action**: RESPOND | ASK_FOLLOWUP | TOOL | HUMAN
