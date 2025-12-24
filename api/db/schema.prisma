@@ -1,0 +1,56 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+// Conversation tracking
+model Conversation {
+  id              String            @id @default(uuid())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  messages        Message[]
+  routingDecisions RoutingDecision[]
+}
+
+// Individual messages in a conversation
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String       // 'user' or 'assistant'
+  content        String
+  createdAt      DateTime     @default(now())
+}
+
+// Routing decisions made by Houston router
+model RoutingDecision {
+  id                String       @id @default(uuid())
+  conversationId    String
+  conversation      Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  // Input
+  userInput         String
+
+  // Classification outputs
+  intent            String       // IDEATION | INFO | EXECUTION
+  riskLevel         String       // LOW | MEDIUM | HIGH
+  confidence        Float        // 0-1
+  nextAction        String       // RESPOND | ASK_FOLLOWUP | TOOL | HUMAN
+  reasoning         String
+  suggestedResponse String?
+
+  // Tool calls (JSON)
+  toolCalls         String?      // JSON array of {tool, args}
+
+  // Metadata for evals
+  category          String?      // dining, art, aviation, etc.
+  model             String?      // GPT model used
+  temperature       Float?
+
+  createdAt         DateTime     @default(now())
+}

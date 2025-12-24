@@ -1,0 +1,51 @@
+{
+  "name": "luxury-request-router",
+  "version": "1.0.0",
+  "description": "Luxury concierge AI routing with GraphQL + Prisma + GPT-4",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "tsx watch api/src/server.ts",
+    "dev:web": "vite",
+    "eval": "tsx scripts/evals.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^1.0.0",
+    "@babel/core": "^7.28.5",
+    "@graphql-tools/schema": "^10.0.30",
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@prisma/client": "^5.0.0",
+    "@redwoodjs/api": "^8.0.0",
+    "@redwoodjs/forms": "^8.0.0",
+    "@redwoodjs/graphql-server": "^8.0.0",
+    "@redwoodjs/router": "^8.0.0",
+    "@redwoodjs/web": "^8.0.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "ai": "^4.0.0",
+    "concurrently": "^9.2.1",
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "graphql-yoga": "^5.18.0",
+    "hono": "^4.11.1",
+    "openai": "^4.77.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsx": "^4.21.0",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@redwoodjs/cli": "^8.0.0",
+    "@redwoodjs/core": "^8.0.0",
+    "@redwoodjs/vite": "^8.9.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.2.0",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "prisma": "^5.0.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.7.2",
+    "vite": "^7.3.0"
+  }
+}
